@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('img/canada1-1.jpeg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 700px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(128, 128, 128, 0.9));
+            opacity: 0.9;
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="file"] {
+            padding: 3px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+        header img {
+            max-width: 140px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+        nav ul li {
+            margin: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: gray;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #007BFF;
+        }
+
+        /* Hamburger Icon Styling */
+        .hamburger-icon {
+            display: none;
+            fill: white; /* Set hamburger icon color to white */
+            cursor: pointer;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hamburger-icon {
+                display: block; /* Show hamburger icon on mobile */
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+            nav {
+                display: none; /* Hide desktop navigation */
+                position: absolute;
+                top: 100%; /* Position below the header */
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                border-radius: 5px;
+                padding: 10px;
+                z-index: 1000;
+            }
+            nav.show {
+                display: block; /* Show mobile navigation when needed */
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="sticky-header">
+        <header>
+            <figure>
+                <img src="img/logo-light.png" alt="Logo">
+            </figure>
+            <!-- Hamburger Icon for Mobile -->
+            <div class="hamburger-icon" onclick="toggleMobileMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#abt">About</a></li>
+                    <li><a href="index.html#tours">Tours</a></li>
+                    <li><a href="booking.html">Booking</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+    </section>
+
+    <!-- Booking Form -->
+    <div class="container">
+        <h2>Travel Booking Form</h2>
+        <form action="submit_booking.php" method="post" enctype="multipart/form-data">
+            <!-- Traveler Information -->
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <!-- Travel Details -->
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <input type="text" id="destination" name="destination" required>
+            </div>
+            <div class="form-group">
+                <label for="travelDate">Travel Date:</label>
+                <input type="date" id="travelDate" name="travelDate" required>
+            </div>
+            <div class="form-group">
+                <label for="returnDate">Return Date:</label>
+                <input type="date" id="returnDate" name="returnDate" required>
+            </div>
+            <div class="form-group">
+                <label for="adults">Number of Adults:</label>
+                <input type="number" id="adults" name="adults" required>
+            </div>
+            <div class="form-group">
+                <label for="children">Number of Children:</label>
+                <input type="number" id="children" name="children" required>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="form-group">
+                <label for="services">Additional Services:</label>
+                <select id="services" name="services" multiple>
+                    <option value="airportPickup">Airport Pickup</option>
+                    <option value="hotelBooking">Hotel Booking</option>
+                    <option value="guidedTours">Guided Tours</option>
+                    <option value="travelInsurance">Travel Insurance</option>
+                </select>
+            </div>
+
+            <!-- Payment Details -->
+            <div class="form-group">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="expiryDate">Card Expiry Date:</label>
+                <input type="month" id="expiryDate" name="expiryDate" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Transacted Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+            </div>
+            <div class="form-group">
+                <label for="amountImage">Upload Proof of Payment:</label>
+                <input type="file" id="amountImage" name="amountImage" accept="image/*" required>
+            </div>
+
+            <!-- Additional Notes -->
+            <div class="form-group">
+                <label for="notes">Additional Notes:</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit">Submit Booking</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle mobile menu visibility
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
